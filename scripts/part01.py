@@ -42,7 +42,7 @@ df_scaled_100x.to_csv('../data/df_100x.csv')
 
 # Saving parquet dataframe scaled 1x
 
-#f.to_parquet('../data/df_1x.parquet')
+df.to_parquet('../data/df_1x.parquet')
 
 # %%
 
