@@ -1,5 +1,8 @@
 # %%
 import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
 
 # %%
 
@@ -34,5 +37,32 @@ df['obv'] = df.groupby('name').apply(lambda x: x['volume'] * (1 if x['close'].di
 df['obv'] = df.groupby('name')['obv'].cumsum()
 
 # %%
-
+# Rename columns
 df = df.rename(columns={'SMA_20':'sma_20', 'EMA_20':'ema_20'})
+# Drop null values
+df = df.dropna()
+
+# %%
+
+features = df.drop(columns=['date', 'close', 'name']) 
+target = df['close']
+
+# %%
+
+X_train, X_test, y_train, y_test = train_test_split(features, target, random_state=10, test_size=0.2)
+
+# %%
+
+# Linear Regression
+
+lr_model = LinearRegression()
+lr_model.fit(X_train, y_train)
+lr_pred = lr_model.predict(X_test)
+
+# %%
+
+# Random Forest Model
+
+rf_model = RandomForestRegressor(n_estimators=10, random_state=10)
+rf_model.fit(X_train, y_train)
+rf_pred = rf_model.predict(X_test)
