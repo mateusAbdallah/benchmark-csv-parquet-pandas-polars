@@ -42,7 +42,7 @@ df_scaled_100x.to_csv('../data/df_100x.csv')
 
 # Saving parquet dataframe scaled 1x
 
-df.to_parquet('../data/df_1x.parquet')
+#f.to_parquet('../data/df_1x.parquet')
 
 # %%
 
@@ -63,20 +63,4 @@ df_1x.info(memory_usage='deep')
 # %%
 df_10x = pd.read_parquet('../data/df_10x.parquet')
 df_10x.info(memory_usage='deep')
-
-# %%
-
-df_filter_aapl = df['name'] == 'AAPL'
-df[df_filter_aapl]
-
-# %%
-
-df_filter_avb = df['name'] == "AVB"
-df[df_filter_avb]
-
-# %%
-
-appl_14 = df[df_filter_aapl][:14]
-appl_max = appl_14['close'].max()
-appl_min = appl_14['close'].min()
 
