@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 # %%
 # Load dataset using Polars
@@ -36,3 +37,10 @@ lr_pred = lr_model.predict(X_test)
 rf_model = RandomForestRegressor(n_estimators=50, random_state=42)
 rf_model.fit(X_train, y_train)
 rf_pred = rf_model.predict(X_test)
+
+# %%
+
+# Evaluate Models
+lr_rmse = np.sqrt(mean_squared_error(y_test, lr_pred))
+rf_rmse = np.sqrt(mean_squared_error(y_test, rf_pred))
+
