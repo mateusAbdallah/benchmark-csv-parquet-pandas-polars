@@ -1,6 +1,7 @@
 # %%
 import part02_polars
 import part02
+import part01
 
 import matplotlib.pyplot as plt
 import streamlit as st
@@ -40,3 +41,12 @@ st.write(f'**Linear Regression RMSE:** {part02.lr_rmse:.2f}')
 st.write(f'**Random Forest RMSE:** {part02.rf_rmse:.2f}')
 
 # %%
+
+st.bar_chart(x=range(10), y=[part01.writing_1x_parquet, part01.writing_10x_parquet, part01.writing_100x_parquet])
+st.bar_chart(x=range(10), y=[part01.writing_10x_csv, part01.writing_100x_csv])
+
+# %%
+
+st.bar_chart(x=range(10), y=[part01.reading_1x_parquet, part01.reading_10x_parquet, part01.reading_100x_parquet])
+st.bar_chart(x=range(10), y=[part01.reading_1x_csv, part01.reading_10x_csv, part01.reading_100x_csv])
+
