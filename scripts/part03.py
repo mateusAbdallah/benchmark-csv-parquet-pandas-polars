@@ -42,6 +42,10 @@ st.write(f'**Random Forest RMSE:** {part02.rf_rmse:.2f}')
 
 # %%
 
+st.title('Benchmarking CSV vs Parquet')
+
+# %%
+
 st.bar_chart(x=range(10), y=[part01.writing_1x_parquet, part01.writing_10x_parquet, part01.writing_100x_parquet])
 st.bar_chart(x=range(10), y=[part01.writing_10x_csv, part01.writing_100x_csv])
 
